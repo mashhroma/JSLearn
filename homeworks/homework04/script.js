@@ -8,14 +8,7 @@
 // 10 – четное число
 console.log('Задание 1');
 for (let i = 0; i <= 10; i++) {
-    if (i === 0) {
-        console.log(i + ' – это ноль');
-    }
-    else if (i % 2 === 0) {
-        console.log(i + ' – четное число');
-    } else {
-        console.log(i + ' – нечетное число');
-    }
+    console.log(i + ((i === 0) ? ' – это ноль' : (i % 2 === 0) ? ' – четное число' : ' – нечетное число'));
 }
 
 // Задание 2
@@ -40,15 +33,8 @@ let isContainsThree = false;
 for (let i = 0; i < 5; i++) {
     arrayTask3.push(Math.floor(Math.random() * 10));
     sumOfElements += arrayTask3[i];
-    if (i === 0) {
-        minElement = arrayTask3[i];
-    }
-    if (minElement > arrayTask3[i]) {
-        minElement = arrayTask3[i];
-    }
-    if (arrayTask3[i] === 3) {
-        isContainsThree = true;
-    }
+    if (i === 0 || minElement > arrayTask3[i]) minElement = arrayTask3[i];
+    if (arrayTask3[i] === 3) isContainsThree = true;
 }
 console.log(`Array: ${arrayTask3}
 Sum of elements = ${sumOfElements}

@@ -7,32 +7,21 @@ console.log(cube(2) + cube(3));
 // Задание 2
 // Пользователь вводит с клавиатуры число, если ввёл текст, необходимо вывести что значение задано неверно
 // Создать функцию, которая высчитывает 13 % от данного числа и выводит в консоль текст "Размер заработной платы за вычетом налогов равен значение"
-const clearSalary = (fullSalary) => {
-    if (isNaN(fullSalary)) {
-        console.log('Значение задано неверно.');
-    } else {
-        console.log('Размер заработной платы за вычетом налогов равен: ' + fullSalary * 0.87);
-    }
-}
+const clearSalary = (fullSalary) =>
+    console.log((fullSalary) ? 'Размер заработной платы за вычетом налогов равен: ' + fullSalary * 0.87 : 'Значение задано неверно.');
+
 console.log('Задание 2');
-let salary = Number(prompt('Введите размер заработной платы'));
-clearSalary(salary);
+clearSalary(Number(prompt('Введите размер заработной платы')));
 
 // Задание 3
 // Пользователь с клавиатуры вводит 3 числа, необходимо создать функцию, которая определяет максимальное значение среди этих чисел
-const getMax = (num1, num2, num3) => {
-    if (num1 > num2 && num1 > num3) {
-        return num1;
-    } else if (num2 > num1 && num2 > num3) {
-        return num2;
-    } else {
-        return num3;
-    }
-}
+const getMax = (num1, num2, num3) => (num1 > num2 && num1 > num3) ? num1 : (num2 > num1 && num2 > num3) ? num2 : num3;
 console.log('Задание 3');
-let number1 = Number(prompt('Введите первое число'));
-let number2 = Number(prompt('Введите второе число'));
-let number3 = Number(prompt('Введите третье число'));
+const getNumber = () => Number(prompt('Введите число'));
+
+let number1 = getNumber();
+let number2 = getNumber();
+let number3 = getNumber();
 console.log(`Максимальное значение среди чисел: ${number1}, ${number2}, ${number3} - это ${getMax(number1, number2, number3)}`);
 
 // Задание 4
