@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .heading {
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="content"></div>
+
+    <ul class="menu">
+        <li class="menu__list"><a href="" class="menu__link">link 1</a></li>
+        <li class="menu__list"><a href="" class="menu__link">link 2</a></li>
+        <li class="menu__list"><a href="" class="menu__link">link 3</a></li>
+        <li class="menu__list"><a href="" class="menu__link">link 4</a></li>
+    </ul>
+
+    <script>
+        const content = document.querySelector('.content');
+
+        const h1El = document.createElement('h1');
+        h1El.textContent = 'h1 element';
+        h1El.style.backgroundColor = '#ccc';
+        h1El.style.textAlign = 'center';
+        h1El.setAttribute('class', 'heading');
+
+        const imgEl = document.createElement('img');
+        imgEl.setAttribute('alt', 'крутое фото');
+
+        content.append(h1El);
+        content.append(imgEl);
+
+
+        const liEl = document.querySelectorAll('.menu__list');
+        const liElOne = document.querySelector('.menu__list');
+        const linkEl = document.querySelector('.menu__link');
+        const menuEl = document.querySelector('.menu');
+
+        console.log(liEl);
+        console.log(liElOne.parentNode.children);
+        console.log(linkEl.childNodes);
+
+        console.log(menuEl.children);
+        console.log(menuEl.childNodes);
+
+        menuEl.childNodes.forEach(element => {
+            console.log(element);
+        });
+
+
+        [...menuEl.children].forEach((child) => {
+            console.log('Child name "%s", child type "%d"', child.modeName, child.nodeType);
+        });
+
+        [...menuEl.children].forEach((child) => {
+            console.log(child);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar 2</title>
+</head>
+
+<body>
+    <!-- <div class="block">
+    </div>
+
+    <div class="elem">
+        <img src="photo.png" alt="photo">
+        <div class="content">
+            <h2 class="heading">Lorem, ipsum dolor.</h2>
+            <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, ea!</p>
+        </div>
+    </div> -->
+    <!-- 
+    <div class="item">
+        <div class="elem">
+            <div class="info">
+                <h2 class="subtitle">Lorem, ipsum dolor.</h2>
+            </div>
+        </div>
+    </div> -->
+
+    <form action="#">
+        <input type="text">
+        <button class="btn">Отправить</button>
+    </form>
+
+    <script>
+        // Задание 1
+        // Дан блок, внутри него необходимо создать элемент div с классом item, разместить текст “Элемент внутри” и задать стили
+        // Цвет текста синий
+        // Рамка сплошная черная
+        // Цвет фона #f8f8f8
+        // Внутренний отступ 16px
+        // Добавить данному блоку класс item_1 (использовать setAttribute)
+        // const blockElement = document.querySelector('.block');
+
+        // const itemElement = document.createElement('div');
+        // blockElement.append(itemElement);
+
+        // const buttonElement = document.createElement('button');
+        // blockElement.append(buttonElement);
+        // buttonElement.textContent = 'styles';
+
+        // buttonElement.onclick = function () {
+        //     itemElement.textContent = 'Элемент внутри';
+        //     itemElement.style.color = 'blue';
+        //     itemElement.style.border = 'solid 1px black';
+        //     itemElement.style.backgroundColor = '#f8f8f8';
+        //     itemElement.style.padding = '16px';
+        //     itemElement.setAttribute('class', 'item_1');
+        // }
+
+        // Задание 2
+        // Необходимо с помощью querySelector найти параграф с классом text
+        // Вывести в консоль соседний элемент h2
+        // Вывести в консоль родительский элемент content
+        // Вывести в консоль картинку
+        // Вывести в консоль родительский элемент elem
+        // const textElement = document.querySelector('.text');
+        // console.log(textElement.previousElementSibling);
+        // console.log(textElement.parentElement);
+        // console.log(textElement.parentElement.previousElementSibling);
+        // console.log(textElement.parentElement.parentElement);
+
+        // const buttonTask2 = document.createElement('button');
+        // textElement.parentElement.parentElement.append(buttonTask2);
+        // buttonTask2.onclick = function () {
+        //     const newDiv = createElement('div');
+        //     textElement.parentElement.parentElement.append(newDiv);
+        //     newDiv.textContent = 'Вы нажали на кнопку';
+        // }
+
+        // Задание 3
+        // С помощью querySelector найти элемент h2  и вывести в консоль всех его родителей
+
+        // const h2El = document.querySelector('h2');
+        // let currentEl = h2El;
+
+        // while (currentEl.parentElement !== null) {
+        //     currentEl = currentEl.parentElement;
+        //     console.log(currentEl);
+        // }
+
+        // const buttonEl = document.createElement('button');
+        // const itemEl = document.querySelector('.item');
+        // itemEl.appendChild(buttonEl);
+        // buttonEl.onclick = function () {
+        //     buttonEl.textContent = '';
+        // };
+
+
+
+        // Задание 4
+        // Дано поле ввода и кнопка отправить, необходим реализовать функционал, если пользователь нажимает на кнопку отправить, а поле ввода пустое, то под полем ввода и кнопкой должен появиться заголовок h2 с текстом вы не заполнили поле ввода
+        // У поля ввода должна появиться рамка красного цвета.
+        const submitButton = document.querySelector('.btn');
+        const inputEl = document.querySelector('input');
+
+        submitButton.onclick = function () {
+            if (inputEl.value === '') {
+                const messageTitle = document.createElement('h2');
+                messageTitle.textContent = 'Вы не заполнили поле ввода';
+                submitButton.parentElement.append(messageTitle);
+                inputEl.style.border = 'solid 1px red';
+            }
+        };
+
+        const resetButton = document.createElement('button');
+        resetButton.textContent = 'Очистить';
+        submitButton.parentElement.append(resetButton);
+
+        resetButton.onclick = function () {
+            inputEl.value = ''
+        }
+
+    </script>
+</body>
+
+</html>

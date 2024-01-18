@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function findMaxSpread() {
+            const values = arguments;
+            let maxValue = -Infinity;
+            for (let index = 0; index < values.length; index++) {
+                if (values[index] > maxValue) {
+                    maxValue = values[index];
+                }
+            }
+            return maxValue;
+        }
+
+        function findMaxRest(...values) {
+            return values.reduce((acc, value) => {
+                if (value > acc) return value;
+                return acc;
+            }, -Infinity);
+        }
+
+        const studentsGroup1 = [
+            {
+                lastName: 'Ivanov',
+                practiceTime: 120
+            },
+            {
+                lastName: 'Petrov',
+                practiceTime: 100
+            },
+            {
+                lastName: 'Sidorov',
+                practiceTime: 50
+            }
+        ];
+
+        const studentsGroup2 = [
+            {
+                lastName: 'Ivanova',
+                practiceTime: 20
+            },
+            {
+                lastName: 'Petrova',
+                practiceTime: 10
+            },
+            {
+                lastName: 'Sidorova',
+                practiceTime: 500
+            }
+        ];
+
+        const practiceTimeStudentsGroup1 = studentsGroup1.map((student) => student.practiceTime);
+        const practiceTimeStudentsGroup2 = studentsGroup2.map((student) => student.practiceTime);
+
+        console.log(findMaxSpread(...practiceTimeStudentsGroup1));
+        console.log(findMaxSpread(...practiceTimeStudentsGroup2));
+        console.log(findMaxSpread(...practiceTimeStudentsGroup1, ...practiceTimeStudentsGroup2));
+
+    </script>
+</body>
+
+</html>
