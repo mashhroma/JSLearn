@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://yandex.ru" class="link">yandex</a>
+
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias commodi eligendi corporis quo sunt voluptatibus
+        rerum, necessitatibus at blanditiis molestiae cumque eius, incidunt iusto error ratione quaerat reiciendis nam
+        earum.</p>
+
+    <input type="text">
+
+    <form action="#">
+        <input type="text" class="input">
+        <button type="submit">Go</button>
+        <div class="error"></div>
+    </form>
+    <button class="button">Купить 1</button>
+    <button class="button">Купить 2</button>
+    <button class="button">Купить 3</button>
+    <div onclick="console.log('hello click html')" class="div-button">Купить 2</div>
+
+    <ul class="menu">
+        <li>list-1</li> <!-- ul>li*3{list-$} -->
+        <li>list-2</li>
+        <li>list-3</li>
+    </ul>
+
+    <script>
+        const buttonEl = document.querySelector('.button');
+        let count = 0;
+
+        const click = function () {
+            console.log('click js button');
+            count++;
+            console.log(`Кликов по кнопке: ${count}`);
+        }
+
+        buttonEl.onclick = click; // вызывается функция при клике
+
+        buttonEl.onclick = click() // вызывается функция при загрузке;
+        buttonEl.addEventListener('click', function (e) {
+            console.log('click add');
+        });
+
+        buttonEl.addEventListener('click', function (e) {
+            console.log('click add more');
+        });
+
+        buttonEl.addEventListener('click', click); // callback - обращение одной функции к другой функции
+
+        const buttonEls = document.querySelectorAll('button');
+
+        buttonEls.forEach(element => {
+            element.addEventListener('click', function (event) {
+                const target = event.target;
+                console.log(target);
+            });
+        });
+        const menuEl = document.querySelector('.menu');
+
+        const nameFunction = (e) => {
+            console.log(e.target, e.currentTarget);
+        }
+
+        menuEl.addEventListener('click', nameFunction);
+
+        document.addEventListener('DOMContentLoaded', function (e) {
+            console.log('loaded');
+        });
+
+        window.addEventListener('load', function (e) {
+            console.log('все загрузилось');
+        });
+
+        const button = document.querySelector('.button');
+
+        button.addEventListener('mouseover', function (e) {
+            console.log('Не нужно наводить, ты лучше нажми');
+        });
+
+        button.addEventListener('mouseleave', function (e) {
+            console.log('Не нужно убегать');
+        });
+
+        window.addEventListener('keydown', function (e) {
+            console.log(e.key); // есть еще keyup, keypress, etc
+        });
+
+        const link = document.querySelector('.link');
+
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            console.log('hello link');
+        });
+
+        document.addEventListener('copy', function (e) {
+            const copyText = document.getSelection().toString();
+            console.log(copyText);
+        });
+
+        window.addEventListener('resize', function (e) {
+            console.log('resize');
+        });
+
+        const inputEl = document.querySelector('input');
+        inputEl.addEventListener('input', function (e) {
+            console.log(e.target.value);
+        });
+
+        const inputText = document.querySelector('.input');
+        const formRun = document.querySelector('form');
+        const errorEl = document.querySelector('.error');
+
+        formRun.addEventListener('submit', function (e) {
+            if (inputText.value === '') {
+                e.preventDefault();
+                errorEl.textContent = 'Поле ввода не должно быть пустым';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

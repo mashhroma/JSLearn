@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="button">Button</button>
+
+    <button class="btnTask2">1</button>
+    <button class="btnTask2">2</button>
+    <button class="btnTask2">3</button>
+
+    <ul class="list">
+        <li class="list__item">List element</li>
+        <li class="list__item">List element</li>
+        <li class="list__item">List element</li>
+    </ul>
+
+    <script>
+        // Task 1
+        // 1. В html создать кнопку button
+        const buttonEl = document.querySelector('.button');
+        // 2. После загрузки страницы вывести в консоль текст “страница загрузилась”
+        document.addEventListener('DOMContentLoaded', function (e) {
+            console.log('страница загрузилась');
+        });
+        // 3. Добавить событие onclick которое выводит в консоль текст “событие onclick”
+        buttonEl.onclick = () => {
+            console.log('событие onclick');
+        }
+        // 4. Добавить событие addEventListener которое выводит в консоль текст “событие addEventListener”
+        buttonEl.addEventListener('click', function (e) {
+            console.log('событие addEventListener');
+        });
+
+
+
+        // Task 2
+        // 1. Создать в html три кнопки button с нумерацией (1, 2, 3 соответственно)
+        const buttonTask2Els = document.querySelectorAll('.btnTask2');
+
+        // 2. Добавить клик на кнопку, чтобы в консоль выводилась именно та кнопка на которую мы нажали
+        buttonTask2Els.forEach(element => {
+            element.addEventListener('click', function (e) {
+                console.log(e.target);
+            });
+        });
+
+        // 3. Добавить кнопку button с текстом 4, которая считает сколько раз на нее нажали и количество нажатий на эту кнопку выводит в консоль
+        const countButtonEl = document.createElement('button')
+        countButtonEl.textContent = '4';
+        buttonTask2Els[0].parentElement.appendChild(countButtonEl);
+        let count = 0;
+        countButtonEl.addEventListener('click', function (e) {
+            console.log(++count);
+        });
+
+        // 4. Создать кнопку button с текстом 5, При клике на которую, меняется текст данной кнопки на “Вы нажали на эту кнопку”
+        const fiveButtonEl = document.createElement('button')
+        fiveButtonEl.textContent = '5';
+        buttonTask2Els[0].parentElement.appendChild(fiveButtonEl);
+        fiveButtonEl.addEventListener('click', function (e) {
+            fiveButtonEl.textContent = 'Вы нажали на эту кнопку';
+        });
+
+
+
+        // Task 3
+        // 1. Создать кнопку, которая добавляет заголовок h1 с текстом, “Новый заголовок, данный элемент нужно расположить после кнопки
+        const h1ButtonEl = document.createElement('button');
+        h1ButtonEl.textContent = 'Add title';
+        fiveButtonEl.parentElement.appendChild(h1ButtonEl);
+
+        const h1El = document.createElement('h1');
+        h1El.textContent = 'Новый заголовок';
+
+        h1ButtonEl.addEventListener('click', function (e) {
+            h1ButtonEl.parentElement.appendChild(h1El);
+        });
+
+        // 2. Создать вторую кнопку, которая будет удалять созданный заголовок h1
+        const h1DelButtonEl = document.createElement('button');
+        h1DelButtonEl.textContent = 'Delete title';
+        fiveButtonEl.parentElement.appendChild(h1DelButtonEl);
+
+        h1DelButtonEl.addEventListener('click', function (e) {
+            if (h1DelButtonEl.parentElement.contains(h1El)) {
+                h1DelButtonEl.parentElement.removeChild(h1El);
+            }
+        });
+
+        // 3. Создать третью кнопку, при наведении на которую в консоль будет выводиться текст “вы навели на данную кнопку” , как только вы убираем курсор мыши с кнопки, в консоли должен появиться текст “Наведения на кнопку больше нет”
+        const hoverButtonEl = document.createElement('button');
+        hoverButtonEl.textContent = 'Hover button';
+        fiveButtonEl.parentElement.appendChild(hoverButtonEl);
+
+        hoverButtonEl.addEventListener('mouseover', function (e) {
+            console.log('вы навели на данную кнопку');
+        });
+
+        hoverButtonEl.addEventListener('mouseleave', function (e) {
+            console.log('Наведения на кнопку больше нет');
+        });
+
+
+        // Task 4
+        // 1. Создать в html список состоящий из 3-х произвольных элементов li
+        const list = document.querySelector('.list');
+
+        // 2. Нужно создать кнопку которая будет добавлять элементы списка с текстом “новый элемент списка”
+        const addButtonEl = document.createElement('button');
+        addButtonEl.textContent = 'Add new item in list';
+        list.before(addButtonEl);
+
+        addButtonEl.addEventListener('click', function (e) {
+            const listItem = document.createElement('li');
+            listItem.textContent = 'новый элемент списка';
+            list.appendChild(listItem);
+        });
+
+        // 3. Создать кнопку, которая будет удалять первый элемент из созданного списка
+        const delButtonEl = document.createElement('button');
+        delButtonEl.textContent = 'Delete new item in list';
+        list.before(delButtonEl);
+
+        delButtonEl.addEventListener('click', function (e) {
+            list.removeChild(list.firstElementChild);
+        });
+
+        // 4. Создать кнопку, при клике на которую ей добавляется класс “click”
+        const addClassButtonEl = document.createElement('button');
+        addClassButtonEl.textContent = 'Add class';
+        list.after(addClassButtonEl);
+
+        addClassButtonEl.addEventListener('click', function (e) {
+            addClassButtonEl.classList.add('click');
+        });
+
+
+    </script>
+</body>
+
+</html>
