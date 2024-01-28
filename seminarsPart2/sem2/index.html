@@ -40,23 +40,23 @@
         // Цвет фона #f8f8f8
         // Внутренний отступ 16px
         // Добавить данному блоку класс item_1 (использовать setAttribute)
-        // const blockElement = document.querySelector('.block');
+        const blockElement = document.querySelector('.block');
 
-        // const itemElement = document.createElement('div');
-        // blockElement.append(itemElement);
+        const itemElement = document.createElement('div');
+        blockElement.append(itemElement);
 
-        // const buttonElement = document.createElement('button');
-        // blockElement.append(buttonElement);
-        // buttonElement.textContent = 'styles';
+        const buttonElement = document.createElement('button');
+        blockElement.append(buttonElement);
+        buttonElement.textContent = 'styles';
 
-        // buttonElement.onclick = function () {
-        //     itemElement.textContent = 'Элемент внутри';
-        //     itemElement.style.color = 'blue';
-        //     itemElement.style.border = 'solid 1px black';
-        //     itemElement.style.backgroundColor = '#f8f8f8';
-        //     itemElement.style.padding = '16px';
-        //     itemElement.setAttribute('class', 'item_1');
-        // }
+        buttonElement.onclick = function () {
+            itemElement.textContent = 'Элемент внутри';
+            itemElement.style.color = 'blue';
+            itemElement.style.border = 'solid 1px black';
+            itemElement.style.backgroundColor = '#f8f8f8';
+            itemElement.style.padding = '16px';
+            itemElement.setAttribute('class', 'item_1');
+        }
 
         // Задание 2
         // Необходимо с помощью querySelector найти параграф с классом text
@@ -64,37 +64,37 @@
         // Вывести в консоль родительский элемент content
         // Вывести в консоль картинку
         // Вывести в консоль родительский элемент elem
-        // const textElement = document.querySelector('.text');
-        // console.log(textElement.previousElementSibling);
-        // console.log(textElement.parentElement);
-        // console.log(textElement.parentElement.previousElementSibling);
-        // console.log(textElement.parentElement.parentElement);
+        const textElement = document.querySelector('.text');
+        console.log(textElement.previousElementSibling);
+        console.log(textElement.parentElement);
+        console.log(textElement.parentElement.previousElementSibling);
+        console.log(textElement.parentElement.parentElement);
 
-        // const buttonTask2 = document.createElement('button');
-        // textElement.parentElement.parentElement.append(buttonTask2);
-        // buttonTask2.onclick = function () {
-        //     const newDiv = createElement('div');
-        //     textElement.parentElement.parentElement.append(newDiv);
-        //     newDiv.textContent = 'Вы нажали на кнопку';
-        // }
+        const buttonTask2 = document.createElement('button');
+        textElement.parentElement.parentElement.append(buttonTask2);
+        buttonTask2.onclick = function () {
+            const newDiv = createElement('div');
+            textElement.parentElement.parentElement.append(newDiv);
+            newDiv.textContent = 'Вы нажали на кнопку';
+        }
 
         // Задание 3
         // С помощью querySelector найти элемент h2  и вывести в консоль всех его родителей
 
-        // const h2El = document.querySelector('h2');
-        // let currentEl = h2El;
+        const h2El = document.querySelector('h2');
+        let currentEl = h2El;
 
-        // while (currentEl.parentElement !== null) {
-        //     currentEl = currentEl.parentElement;
-        //     console.log(currentEl);
-        // }
+        while (currentEl.parentElement !== null) {
+            currentEl = currentEl.parentElement;
+            console.log(currentEl);
+        }
 
-        // const buttonEl = document.createElement('button');
-        // const itemEl = document.querySelector('.item');
-        // itemEl.appendChild(buttonEl);
-        // buttonEl.onclick = function () {
-        //     buttonEl.textContent = '';
-        // };
+        const buttonEl = document.createElement('button');
+        const itemEl = document.querySelector('.item');
+        itemEl.appendChild(buttonEl);
+        buttonEl.onclick = function () {
+            buttonEl.textContent = '';
+        };
 
 
 
