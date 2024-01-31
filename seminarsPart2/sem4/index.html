@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" class="form">
+        <input type="checkbox" name="check" id="check" class="check"><label for="check">Согласен с условиями</label>
+        <button class="button" type="submit">Отправить</button>
+        <div class="error-message"></div>
+    </form>
+    <br><br>
+    <form action="#" class="drinkForm">
+        <input type="radio" class="drink" name="drink" id="tea"><label for="tea">Tea</label>
+        <input type="radio" class="drink" name="drink" id="coffee"><label for="coffee">Coffee</label>
+        <button class="drink" type="submit">Выбрать</button>
+        <div class="message"></div>
+    </form>
+    <br><br>
+    <form action="#" class="password">
+        <input type="text" class="password__input" placeholder="Enter password" style="outline: none;">
+        <button class="password__button" type="submit">Отправить</button>
+        <div class="password__message"></div>
+    </form>
+    <br><br>
+
+    <div class="change-title" style="border: solid 1px; padding: 10px;">
+        <input type="text" class="change" placeholder="Enter a new title" style="outline: none;">
+        <h1 class="title">Заголовок</h1>
+    </div>
+
+    <script>
+        // Task 1
+        // В html создать элемент checkbox и текст рядом с ним “Согласен с условиями”
+        // Добавить кнопку отправить
+        // При клике на кнопку отправить нужно проверять выбран ли активным элемент checkbox
+        // Если элемент не выбран, добавить текст под чекбоксом “Необходимо согласиться с условиями”
+        const formEl = document.querySelector('.form');
+        const inputEl = document.querySelector('.check');
+
+        formEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            formEl
+                .querySelector('.error-message')
+                .textContent = inputEl.checked ? 'OK' : 'Необходимо согласиться с условиями';
+        });
+
+        // Task 2
+        // В html создать 2 элемента радио кнопки (input type=”radio”) и текст “Чай”, “Кофе” соответственно
+        // Кнопка отправить
+        // Если выбран чай, необходимо вывести сообщение “Чай закончился”
+        // Если выбран кофе, необходимо вывести сообщение “Кофе закончился”
+        const drinkFormEl = document.querySelector('.drinkForm');
+
+        drinkFormEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            drinkFormEl
+                .querySelector('.message')
+                .textContent = tea.checked ? 'Чай закончился' : coffee.checked ? 'Кофе закончился' : 'Ничего не выбрано';
+        });
+
+        //Task 3
+        // Создать поле ввода (пароль)
+        // Кнопка отправить
+        // Если пользователь вводит текст “пароль” то поле ввода должно быть подсвечено зеленым цветом
+        // Если пароль неверный, у поля ввода появляется красная обводка и текст “пароль неверный”
+        const passwordFormEl = document.querySelector('.password');
+        const passInput = document.querySelector('.password__input');
+
+        passwordFormEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (passInput.value === '') {
+                passwordFormEl
+                    .querySelector('.password__message')
+                    .textContent = 'Поле не должно быть пустым';
+            }
+            else {
+                passInput.style.borderColor = (passInput.value === 'пароль') ? 'green' : 'red';
+            }
+        });
+
+        // Task 4
+        // Создать поле ввода и под ним заголовок h1 с текстом “Заголовок”
+        // При вводе текста в поле ввода необходимо чтобы текст внутри заголовка меняется на введенный в поле ввода
+        const changeInputEl = document.querySelector('.change');
+        const titleEl = document.querySelector('.title');
+
+        changeInputEl.addEventListener('input', function (e) {
+            titleEl.textContent = (e.target.value === '') ? 'Заголовок' : e.target.value;
+        });
+    </script>
+</body>
+
+</html>
