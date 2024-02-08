@@ -1,0 +1,26 @@
+[
+    {
+        "scr": "img.png",
+        "alt": "img obj",
+        "name": "Название из obg data",
+        "link": "product.html",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.",
+        "price": 2200
+    },
+    {
+        "scr": "img2.png",
+        "alt": "img2 obj",
+        "name": "Название2 из obg data",
+        "link": "product2.html",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.",
+        "price": 2200
+    },
+    {
+        "scr": "img3.png",
+        "alt": "img3 obj",
+        "name": "Название 3 из obg data",
+        "link": "product3.html",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.",
+        "price": 2200
+    }
+]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product-box {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: 200px;
+            border: solid 1px #000;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-box"></div>
+
+    <script>
+        const productsData = [
+            {
+                scr: 'img.png',
+                alt: 'img obj',
+                name: 'Название из obg data',
+                link: 'product.html',
+                desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.',
+                price: 2200
+            },
+            {
+                scr: 'img2.png',
+                alt: 'img2 obj',
+                name: 'Название2 из obg data',
+                link: 'product2.html',
+                desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.',
+                price: 2200
+            },
+            {
+                scr: 'img3.png',
+                alt: 'img3 obj',
+                name: 'Название 3 из obg data',
+                link: 'product3.html',
+                desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, aut.',
+                price: 2200
+            }
+        ];
+
+        const productBox = document.querySelector('.product-box');
+
+        productsData.forEach(productData => {
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+
+            const productImg = document.createElement('img');
+            productImg.classList.add('product__img');
+            productImg.setAttribute('alt', productData.alt);
+            productImg.src = productData.scr;
+
+            const productContent = document.createElement('div');
+            productContent.classList.add('product__content');
+
+            const productLink = document.createElement('a');
+            productLink.classList.add('product__name');
+            productLink.href = productData.link;
+            productLink.textContent = productData.name;
+
+            const productText = document.createElement('p');
+            productText.classList.add('product__text');
+            productText.textContent = productData.desc;
+
+            const productPrice = document.createElement('p');
+            productPrice.classList.add('product__price');
+            productPrice.textContent = productData.price;
+
+            productBox.appendChild(productEl);
+
+            productEl.appendChild(productImg);
+            productEl.appendChild(productContent);
+
+            productContent.appendChild(productLink);
+            productContent.appendChild(productText);
+            productContent.appendChild(productPrice);
+        });
+
+    </script>
+</body>
+
+</html>

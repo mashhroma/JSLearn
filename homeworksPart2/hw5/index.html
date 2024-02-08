@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 5 (Lesson 10)</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fae6e6;
+        }
+
+        .center {
+            padding-left: 20vw;
+            padding-right: 20vw;
+        }
+
+        .heading {
+            background-color: #FFF;
+            color: #fae6e6;
+            font-size: 50px;
+            text-shadow: 10px 5px #7b7b72;
+            padding: 20px;
+        }
+
+        .content-box {
+            padding: 20px;
+            background-color: #FFF;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .movie {
+            display: flex;
+            width: 100%;
+            border: solid 1px #000;
+            padding: 0, 16px;
+        }
+
+        .movie__title {
+            margin-bottom: 20px;
+        }
+
+        .movie__content {
+            padding: 20px;
+        }
+
+        .movie__year,
+        .movie__release,
+        .movie__runtime {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .movie__genre {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 8px;
+            border: solid 1px #7b7b72;
+            color: #7b7b72;
+        }
+
+        .movie__director,
+        .movie__actors {
+            font-style: italic;
+        }
+
+        .movie__plot {
+            margin-top: 20px;
+            padding: 8px;
+            border: solid 1px #7b7b72;
+            background-color: #f4eecd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h1 class="heading">Movies list</h1>
+        <section class="content-box center"></section>
+    </div>
+
+    <script src="data.js">
+    </script>
+    <script>
+        const moviesData = JSON.parse(dataInfo);
+        console.log(moviesData);
+        const contentBoxEl = document.querySelector('.content-box');
+
+        moviesData.forEach(movie => {
+            const movieEl = document.createElement('div');
+            movieEl.className = 'movie';
+
+            const imgEl = document.createElement('img')
+            imgEl.className = 'movie__img';
+            imgEl.src = movie.Poster;
+            imgEl.alt = `Poster of ${movie.Title}`;
+
+            const content = document.createElement('div');
+            content.className = 'movie__content';
+
+            const titleEl = document.createElement('h2')
+            titleEl.className = 'movie__title'
+            titleEl.textContent = movie.Title;
+
+            const yearEl = document.createElement('p');
+            yearEl.className = 'movie__year';
+            yearEl.textContent = movie.Year;
+
+            const releasedEl = document.createElement('p');
+            releasedEl.className = 'movie__release';
+            releasedEl.textContent = movie.Released;
+
+            const runtimeEl = document.createElement('p');
+            runtimeEl.className = 'movie__runtime';
+            runtimeEl.textContent = movie.Runtime;
+
+            const genreEl = document.createElement('p')
+            genreEl.className = 'movie__genre';
+            genreEl.textContent = movie.Genre;
+
+            const directorEl = document.createElement('p')
+            directorEl.className = 'movie__director';
+            directorEl.textContent = movie.Director;
+
+            const actorsEl = document.createElement('p')
+            actorsEl.className = 'movie__actors';
+            actorsEl.textContent = movie.Actors;
+
+            const plotEl = document.createElement('p')
+            plotEl.className = 'movie__plot';
+            plotEl.textContent = movie.Plot;
+
+            contentBoxEl.append(movieEl);
+            movieEl.append(imgEl)
+            movieEl.append(content);
+
+            content.append(titleEl);
+            content.append(yearEl);
+            content.append(releasedEl);
+            content.append(runtimeEl);
+            content.append(genreEl);
+            content.append(directorEl);
+            content.append(actorsEl);
+            content.append(plotEl);
+        });
+
+    </script>
+</body>
+
+</html>
