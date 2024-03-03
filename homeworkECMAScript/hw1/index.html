@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMAScript - Homework 1</title>
+</head>
+
+<body>
+    <main class="block" id="root">
+        <section class="items">
+            <div class="item">
+                <p class="my-class">This is my class.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 1) Дан массив const arr = [1, 5, 7, 9] с помощью Math.min и spread оператора, найти минимальное число в массиве, решение задание должно состоять из одной строки
+        const arr = [1, 5, 7, 9, -3, 2, 5];
+        console.log(Math.min(...arr));
+
+        // 2) Напишите функцию createCounter, которая создает счетчик и возвращает объект с двумя методами: increment и decrement. Метод increment должен увеличивать значение счетчика на 1, а метод decrement должен уменьшать значение счетчика на 1. Значение счетчика должно быть доступно только через методы объекта, а не напрямую.
+        const createCounter = (initialCounter) => {
+            let counter = initialCounter;
+            return {
+                increment: () => ++counter,
+                decrement: () => --counter,
+                getCounter: () => counter
+            };
+        }
+
+        const myCount = createCounter(3);
+        myCount.decrement();
+        myCount.decrement();
+        myCount.increment();
+
+        console.log(myCount.getCounter());
+
+        // 3) Напишите рекурсивную функцию findElementByClass, которая принимает корневой элемент дерева DOM и название класса в качестве аргументов и возвращает первый найденный элемент с указанным классом в этом дереве.
+        // Пример
+        // const rootElement = document.getElementById('root');
+        // const targetElement = findElementByClass(rootElement, 'my-class');
+        // console.log(targetElement);
+        let currentElement = null;
+        function findElementByClass(root, findClass) {
+            if (root.className == findClass) {
+                currentElement = root;
+            }
+            if (root.hasChildNodes()) {
+                for (let element of root.children) {
+                    findElementByClass(element, findClass);
+                }
+            }
+            return currentElement;
+        }
+
+        const rootElement = document.getElementById('root');
+        const targetElement = findElementByClass(rootElement, 'my-class');
+        console.log(targetElement);
+    </script>
+</body>
+
+</html>

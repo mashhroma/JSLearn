@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // TASK 1
+        // 1. Создайте функцию mergeArrays, которая принимает два массива и возвращает новый массив, содержащий все элементы из обоих массивов. Используйте spread оператор для объединения массивов.
+        // mergeArrays([1, 2, 3], [4, 5, 6]); // Ожидаемый результат: [1, 2, 3, 4, 5, 6]
+        function mergeArrays(arr1, arr2) {
+            return [...arr1, ...arr2];
+        }
+        console.log(mergeArrays([1, 2, 3], [4, 5, 6]));
+
+        // 2. Создайте функцию removeDuplicates, которая принимает любое количество аргументов и возвращает новый массив, содержащий только уникальные значения. Используйте rest оператор для сбора всех аргументов в массив а затем filter для определения дубликатов.
+        // removeDuplicates(1, 2, 3, 2, 4, 1, 5); // Ожидаемый результат: [1, 2, 3, 4, 5]
+        function removeDuplicates(...params) {
+            const array = [...params];
+            return array.filter((item, index) => {
+                return array.indexOf(item) === index
+            });
+        }
+        console.log(removeDuplicates(1, 2, 3, 2, 4, 1, 5));
+
+
+        // TASK 2
+        // 1. Напишите функцию getEvenNumbers, которая принимает массив чисел в качестве аргумента и возвращает новый массив, содержащий только четные числа.
+        function getEvenNumbers(...values) {
+            return values.filter((value) => (value % 2 === 0));
+        };
+        console.log(getEvenNumbers(1, 2, 3, 5, 76, 6, 12));
+
+        // 2. Напишите функцию calculateAverage, которая принимает массив чисел в качестве аргумента и возвращает среднее значение этих чисел.
+        function calculateAverage(...values) {
+            return values.reduce((acc, value) => {
+                return acc + value;
+            }, 0) / values.length;
+        }
+        console.log(calculateAverage(1, 2, 3, 4));
+
+        // 3. Напишите функцию capitalizeFirstLetter, которая принимает строку в качестве аргумента и возвращает новую строку, в которой первая буква каждого слова является заглавной.
+        function capitalizeFirstLetter(string) {
+            return string
+                .split(' ')
+                .map(word => {
+                    return word[0].toUpperCase() + word.slice(1);
+                })
+                .join(' ');
+        }
+        console.log(capitalizeFirstLetter('это мои любимые мандарины'));
+
+        // TASK 3
+        // Напишите функцию createCalculator, которая принимает начальное значение и возвращает объект с двумя методами: add и subtract. Метод add должен увеличивать значение на переданное число, а метод subtract должен уменьшать значение на переданное число. Значение должно быть доступно только через методы объекта, а не напрямую.
+        const createCalculator = (initialValue) => {
+            let value = initialValue;
+
+            return {
+                add: function (number) {
+                    value += number;
+                },
+                subtract: function (number) {
+                    value -= number;
+                },
+
+                getValue: function () {
+                    return value;
+                }
+            };
+        }
+
+        const myCount = createCalculator(3);
+        myCount.add(3);
+        myCount.subtract(7);
+        console.log(myCount.getValue());
+
+        // TASK 4
+        // Напишите функцию createPasswordChecker, которая принимает допустимую длину пароля в качестве аргумента и возвращает функцию для проверки введенного пароля. Возвращаемая функция должна принимать пароль и возвращать true, если его длина соответствует допустимой, и false в противном случае.
+        // // Пример использования:
+        // const isPasswordValid = createPasswordChecker(8);
+        // console.log(isPasswordValid('password')); // Ожидаемый результат: false
+        // console.log(isPasswordValid('secret')); // Ожидаемый результат: true
+
+        function createPasswordChecker(passwordLength) {
+            return (password) => {
+                return (password.length < passwordLength)
+            }
+        }
+        const isPasswordValid = createPasswordChecker(8);
+        console.log(isPasswordValid('password')); // Ожидаемый результат: false
+        console.log(isPasswordValid('secret')); // Ожидаемый результат: true
+
+    </script>
+</body>
+
+</html>
