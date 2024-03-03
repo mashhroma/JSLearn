@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="player">
+        <video src="cats-song.mp4" class="video"></video>
+        <div class="controls">
+            <img class="play" src="./img/play.png" alt="">
+            <img class="pause" src="./img/pause.png" alt="">
+            <input class="timeline" type="range" value="0" step="0.01">
+            <div class="current-time">0</div>
+            <input class="volume" type="range" min="0" max="1" step="0.01">
+        </div>
+    </div>
+
+    <script>
+        const mediaEl = document.querySelector('.video');
+        const playEl = document.querySelector('.play');
+        const pauseEl = document.querySelector('.pause');
+        const currentTimeEl = document.querySelector('.current-time');
+        const timelineEl = document.querySelector('.timeline');
+        const volumeEl = document.querySelector('.volume');
+
+        playEl.addEventListener('click', function (e) {
+            mediaEl.play();
+        });
+
+        pauseEl.addEventListener('click', function (e) {
+            mediaEl.pause();
+        });
+
+        mediaEl.addEventListener('timeupdate', function (e) {
+            currentTimeEl.innerText = Math.round(mediaEl.currentTime);
+            timelineEl.value = mediaEl.currentTime / mediaEl.duration * 100;
+        });
+
+        timelineEl.addEventListener('input', function (e) {
+            mediaEl.currentTime = timelineEl.value / 100 * mediaEl.duration;
+        });
+
+        volumeEl.addEventListener('input', function (e) {
+            mediaEl.volume = volumeEl.value;
+        });
+
+    </script>
+
+</body>
+
+</html>

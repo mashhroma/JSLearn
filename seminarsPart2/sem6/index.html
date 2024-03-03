@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart {
+            margin-top: 100px;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .product {
+            width: 652px;
+            height: 306px;
+            box-shadow: 5px 10px 10px rgb(235, 235, 235);
+            display: flex;
+        }
+
+        .product__content {
+            /* width: 340px; */
+            padding: 31px 22px;
+        }
+
+        .product__exit {
+            padding: 31px 22px;
+        }
+
+        .product__title {
+            color: rgb(34, 34, 34);
+            font-family: Lato;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 29px;
+            letter-spacing: 0%;
+            display: flex;
+            margin-bottom: 42px;
+        }
+
+        .product__desc {
+            font-family: Lato;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+
+        .product__quantity {
+            width: 44px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart">
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataProducts);
+
+        const cartEl = document.querySelector('.cart');
+
+        data.forEach(product => {
+            const productEl = document.createElement('div');
+            productEl.className = 'product';
+
+            const imgEl = document.createElement('img');
+            imgEl.src = product.image;
+            imgEl.alt = 'photo';
+
+            const contentEl = document.createElement('div');
+            contentEl.className = 'product__content';
+
+            const titleEl = document.createElement('a');
+            titleEl.className = 'product__title';
+            titleEl.href = '#';
+            titleEl.textContent = product.brand.toUpperCase() + product.name.toUpperCase();
+
+            const exitEl = document.createElement('a');
+            exitEl.className = 'product__exit';
+            exitEl.textContent = 'X';
+
+            const priceEl = document.createElement('p');
+            priceEl.className = 'product__desc';
+            priceEl.textContent = `Price: ${product.currency === 'USD' ? '$' : 'руб.'}`;
+
+            const colorEl = document.createElement('p');
+            colorEl.className = 'product__desc';
+            colorEl.textContent = `Color: ${product.color}`;
+
+            const sizeEl = document.createElement('p');
+            sizeEl.className = 'product__desc';
+            sizeEl.textContent = `Size: ${product.size}`;
+
+            const quantityEl = document.createElement('p');
+            quantityEl.className = 'product__desc';
+            quantityEl.textContent = `Quantity: `;
+
+            const inputEl = document.createElement('input');
+            inputEl.className = 'product__quantity';
+            inputEl.type = 'number';
+            inputEl.value = product.quantity;
+
+            cartEl.append(productEl);
+
+            productEl.append(imgEl);
+            productEl.append(contentEl);
+            productEl.append(exitEl);
+
+            contentEl.append(titleEl)
+            contentEl.append(priceEl);
+            contentEl.append(colorEl);
+            contentEl.append(sizeEl);
+            contentEl.append(quantityEl);
+            quantityEl.appendChild(inputEl)
+        });
+
+
+
+    </script>
+</body>
+
+</html>
