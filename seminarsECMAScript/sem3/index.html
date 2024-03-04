@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // TASK 1
+        // Напишите функцию getPrototypeChain(obj), которая будет
+        // возвращать цепочку прототипов для заданного объекта
+        // obj. Функция должна вернуть массив прототипов, начиная
+        // от самого объекта и заканчивая глобальным объектом
+        // Object.prototype.
+        function getPrototypeChain(obj) {
+            list = [];
+            list.push(obj);
+            while (Object.getPrototypeOf(obj)) {
+                obj = Object.getPrototypeOf(obj);
+                list.push(obj);
+            }
+            return list;
+        }
+        const chain = getPrototypeChain([1, 2, 3, 5]);
+        console.log(chain);
+
+
+        // TASK 2
+        // Напишите конструктор объекта Person, который принимает два аргумента:
+        // name (строка) и age (число). Конструктор должен создавать объект с
+        // указанными свойствами name и age и методом introduce(), который
+        // выводит в консоль строку вида "Меня зовут [name] и мне [age] лет.".
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.introduce = function () {
+            console.log(`Меня зовут ${this.name} и мне ${this.age} лет.`)
+        };
+        // Пример:
+        const person1 = new Person("John", 25);
+        person1.introduce(); // "Меня зовут John и мне 25 лет."
+
+
+        // TASK 3
+        // Создайте класс BankAccount, который представляет банковский счет.
+        // У него должны быть свойства accountNumber (номер счета) и balance
+        // (баланс), а также методы deposit(amount) для пополнения счета, 
+        // withdraw(amount) для снятия денег со счета и метод printBalance, 
+        // который отобразит в консоль текущий баланс счета. Класс должен иметь
+        // также статическое свойство bankName со значением "GBank", которое 
+        // содержит название банка.
+        class BankAccount {
+            static bankName = 'GBank';
+
+            constructor(accountNumber, balance) {
+                this.accountNumber = accountNumber;
+                this.balance = balance;
+            }
+
+            deposit = (amount) => {
+                // if (String(amount).split('.')[1].length > 2) {
+
+                // }
+                if (amount <= 0 || amount === Infinity) {
+                    throw new Error('Wrong deposit amount, must be a positive number.');
+                }
+                this.balance += amount;
+                console.log(`Deposited ${amount} into account ${this.accountNumber}. New balance: ${this.balance}`);
+            }
+
+            withdraw = (amount) => {
+                if (amount <= 0 || amount === Infinity) {
+                    throw new Error('Wrong deposit amount, must be a positive number.');
+                }
+                if (amount > this.balance) {
+                    throw new Error(`Insufficient funds in account ${this.accountNumber}`);
+                }
+                this.balance -= amount;
+                console.log(`Withdrawn ${amount} from account ${this.accountNumber}. New balance: ${this.balance}`);
+            }
+
+            printBalance = () => {
+                console.log(`${BankAccount.bankName} account "${this.accountNumber}" balance: ${this.balance}`);
+            }
+        }
+        const account1 = new BankAccount("1234567890", 1000);
+        try {
+            account1.deposit(500);
+            account1.withdraw(200);
+            // account1.withdraw(1500); // Insufficient funds in account "1234567890"
+            // account1.withdraw(-200); // Wrong deposit amount, must be a positive number.
+            // account1.deposit(-500); // Wrong deposit amount, must be a positive number.
+            // account1.deposit(Infinity); // Wrong deposit amount, must be a positive number.
+            account1.printBalance(); // GBank account "1234567890" balance: 1300
+        } catch (error) {
+            console.log(error);
+        }
+
+        // TASK 4
+        // Создайте класс Animal, который будет представлять животное. У
+        // класса Animal должны быть следующие свойства и методы:
+        // ● Свойство name (строка) - имя животного.
+        // ● Метод speak() - выводит в консоль звук, издаваемый животным.
+
+        // Создайте класс Dog, который наследуется от класса Animal. Для
+        // класса Dog добавьте дополнительное свойство и метод:
+        // ● Свойство breed (строка) - порода собаки.
+        // ● Метод fetch() - выводит в консоль сообщение "Собака [name]
+        // принесла мяч.".
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+            speak = () => {
+                console.log(`${this.name} издает звук.`);
+            }
+        }
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name);
+                this.breed = breed;
+            }
+
+            fetch = () => {
+                console.log(`${this.name} принес мяч.`);
+            }
+        }
+        // Пример использования:
+        const animal1 = new Animal("Животное");
+        animal1.speak(); // "Животное издает звук."
+        const dog1 = new Dog("Бобик", "Дворняжка");
+        dog1.speak(); // "Бобик издает звук."
+        console.log(dog1.breed); // "Дворняжка"
+        dog1.fetch(); // "Бобик принес мяч."
+
+    </script>
+</body>
+
+</html>
