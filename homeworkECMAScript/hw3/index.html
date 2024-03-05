@@ -22,20 +22,18 @@
                 this.name = name;
             }
 
-            displayInfo = () => {
+            displayInfo() {
                 console.log(`Name: ${this.name}`);
             }
         }
 
         class Manager extends Employee {
-            department;
-
             constructor(name, department) {
                 super(name);
                 this.department = department;
             }
 
-            displayInfo = () => {
+            displayInfo() {
                 console.log(`
 Name: ${this.name}
 Department: ${this.department}
@@ -63,20 +61,18 @@ Department: ${this.department}
         // Метод addProduct(product) - принимает объект product и добавляет его в список продуктов заказа.
         // Метод getTotalPrice() - возвращает общую стоимость заказа, основанную на ценах продуктов.
         class Order {
+            products = [];
+
             constructor(orderNumber) {
                 this.orderNumber = orderNumber;
-                this.products = [];
             }
 
-            addProduct = (product) => {
+            addProduct(product) {
                 this.products.push(product);
             }
 
-            getTotalPrice = () => {
-                return this.products.reduce(
-                    function (sum, product) {
-                        return sum += product.price
-                    }, 0);
+            getTotalPrice() {
+                return this.products.reduce((sum, product) => sum + product.price, 0);
             }
         }
 
@@ -93,7 +89,6 @@ Department: ${this.department}
         order.addProduct(product1);
         const product2 = new Product('Headphones', 100);
         order.addProduct(product2);
-        console.log(order);
         console.log(order.getTotalPrice()); // Вывод: 600
     </script>
 </body>
