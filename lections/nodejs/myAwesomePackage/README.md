@@ -1,0 +1,3 @@
+# MY AWESOME MATH MASHHROMA PACKAGE
+
+Math functions

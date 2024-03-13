@@ -108,7 +108,33 @@
         // В обработчике .then() преобразуйте полученный ответ в JSON.
         // После успешного получения и преобразования ответа в JSON, отобразите на странице список пользователей. Для каждого пользователя покажите его имя и email. Для отображения можно использовать любой HTML-элемент, например, ul для списка и li для элементов списка.
         // Добавьте базовую обработку ошибок, чтобы в случае неудачного запроса на странице отображалось сообщение об ошибке.
-        const content = document.querySelector('.content');
+        // const content = document.querySelector('.content');
+
+        // function getDataFromServer(url) {
+        //     fetch(url)
+        //         .then((response) => {
+        //             return response.json();
+        //         })
+        //         .then((data) => {
+        //             data.forEach(item => {
+        //                 const user = document.createElement('div');
+        //                 user.className = 'user';
+        //                 user.innerHTML = `<p class="name">${item.username}</p><p class="email">${item.email}</p>`;
+        //                 content.append(user);
+        //             });
+
+        //             console.log(data);
+        //         })
+        //         .catch(error => {
+        //             console.error('error');
+        //             content.innerHTML = `<strong>Что-то пошло не так...</strong>`;
+        //         });
+        // }
+
+
+        // getDataFromServer('https://jsonplaceholder.typicode.com/users');
+
+        const contentEL = document.querySelector('.content');
 
         function getDataFromServer(url) {
             fetch(url)
@@ -116,18 +142,20 @@
                     return response.json();
                 })
                 .then((data) => {
+                    data.forEach(element => {
+                        console.log(`Имя ${element.name} почтовый адрес ${element.email}`);
+                    });
                     data.forEach(item => {
-                        const user = document.createElement('div');
-                        user.className = 'user';
-                        user.innerHTML = `<p class="name">${item.username}</p><p class="email">${item.email}</p>`;
-                        content.append(user);
+                        const userEl = document.createElement('div');
+                        userEl.className = 'user';
+                        userEl.innerHTML = `<p class="name">${item.name}</p><p class="email">${item.email}</p>`;
+                        contentEL.append(userEl);
                     });
 
-                    console.log(data);
                 })
                 .catch(error => {
                     console.error('error');
-                    content.innerHTML = `<strong>Что-то пошло не так...</strong>`;
+                    contentEL.innerHTML = `<strong> Что-то пошло не так ...</strong>`;
                 });
         }
 

@@ -1,0 +1,12 @@
+{
+  "name": "my_awesome_mashhroma_package",
+  "version": "1.0.0",
+  "description": "Math functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Maria Savkina",
+  "license": "ISC"
+}
