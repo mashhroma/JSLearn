@@ -1,0 +1,16 @@
+{
+  "name": "string-counter",
+  "version": "2.0.0",
+  "description": "This package can help to count chars or word in any string.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "string",
+    "words",
+    "chars"
+  ],
+  "author": "Maria Savkina",
+  "license": "ISC"
+}

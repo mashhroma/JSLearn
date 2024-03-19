@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlebars example</title>
+</head>
+
+<body>
+    <h1>Article list</h1>
+    {{#each articles}}
+    <h2>{{this.title}}</h2>
+    <p>{{this.description}}</p>
+    {{/each}}
+</body>
+
+</html>
