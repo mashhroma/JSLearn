@@ -69,6 +69,11 @@ class Manager {
   orderList = [];
   orderCounter = 0;
 
+  constructor(dishes, chiefs) {
+    this.dishes = dishes;
+    this.chiefs = chiefs;
+  }
+
   hasClientOrder(client) {
     const clients = this.orderList.map((order) => order.client);
     if (clients.includes(client)) return true;
@@ -81,14 +86,14 @@ class Manager {
     return false;
   }
 
-  hasDishInMenu(orderDishes) {
-    const notInMenu = [];
+  hasDishesInMenu(orderDishes) {
+    const notExistedDishes = [];
     const dishMenuNames = dishes.map((dish) => dish.name);
     orderDishes.forEach(orderDish => {
       if (!dishMenuNames.includes(orderDish.name))
-        notInMenu.push(orderDish);
+        notExistedDishes.push(orderDish);
     });
-    return notInMenu;
+    return notExistedDishes;
   }
 
   getOrderByClient(client) {
@@ -113,7 +118,7 @@ class Manager {
   }
 
   newOrder(client, ...orderDishes) {
-    const checkMenu = this.hasDishInMenu(orderDishes);
+    const checkMenu = this.hasDishesInMenu(orderDishes);
     if (checkMenu.length > 0) {
       let errorMessage = '';
       checkMenu.forEach(dish => {
@@ -153,7 +158,7 @@ class Manager {
 }
 
 // Можно передать внутрь конструктора что-либо, если необходимо.
-const manager = new Manager();
+const manager = new Manager(dishes, chiefs);
 
 // Вызовы ниже должны работать верно, менять их нельзя, удалять тоже.
 manager.newOrder(
