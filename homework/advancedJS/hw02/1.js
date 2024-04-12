@@ -18,3 +18,53 @@
 библиотеке и возвращать true или false в зависимости от того, есть ли такая 
 книга в списке или нет.
 */
+
+class Library {
+    #books = [];
+
+    constructor(books) {
+        if (new Set(books).size !== books.length) {
+            throw new Error('Массив не должен содержать дубликаты.');
+        }
+        this.#books = books;
+    }
+
+    get allBooks() {
+        return this.#books;
+    }
+
+    addBook(title) {
+        if (this.hasBook(title)) {
+            throw new Error('Книга с таким названием уже существует в списке');
+        }
+        this.#books.push(title);
+    }
+
+    removeBook(title) {
+        if (!this.hasBook(title)) {
+            throw new Error('Книги с таким названием нет в списке');
+        }
+        const index = this.#books.indexOf(title);
+        this.#books.splice(index, 1);
+    }
+
+    hasBook(title) {
+        if (this.#books.includes(title)) {
+            return true;
+        }
+        return false;
+    }
+}
+
+
+const myLibrary = new Library(['Война и мир', 'Преступление и наказание', 'Вишневый сад', 'Ревизор']);
+
+console.log(myLibrary.allBooks);
+
+myLibrary.addBook('Гроза');
+console.log(myLibrary.allBooks);
+
+myLibrary.removeBook('Вишневый сад');
+console.log(myLibrary.allBooks);
+
+console.log(myLibrary.hasBook('Преступление и наказание'));

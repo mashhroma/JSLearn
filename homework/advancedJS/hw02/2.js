@@ -29,6 +29,34 @@ function uid() {
   return Math.random().toString(36).slice(2);
 }
 
+function addProduct(item) {
+  let reviewsList = '';
+  item.reviews.forEach(review => {
+    reviewsList += `<li class="reviews_item">${review.text}</li>`
+  });
+
+  const productEl = document.createElement('div');
+  productEl.className = 'product';
+  productEl.id = item.id;
+  productEl.innerHTML = `
+  <h3 class="product__name">${item.product}</h3>
+  <h4 class="reviews__heading">Отзывы</h4>
+  <ul class="reviews__list">${reviewsList}</ul>
+  <form class="reviews__form">
+    <textarea class="reviews__input" type="text" placeholder="Оставить отзыв о товаре..."></textarea>
+    <span class="reviews__error"></span>
+    <button class="reviews__button">Добавить отзыв</button>
+  </form>
+  `;
+
+  contentEL.append(productEl);
+}
+
+function addReviewToProduct(id, review) {
+  const index = initialData.findIndex(product => product.id === id);
+  initialData[index].reviews.push(review);
+}
+
 const initialData = [
   {
     id: uid(),
@@ -65,3 +93,43 @@ const initialData = [
     ],
   },
 ];
+
+const contentEL = document.querySelector('.content');
+
+initialData.forEach(product => {
+  addProduct(product);
+});
+
+document.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (e.target.className === 'reviews__button') {
+    const errorEl = e.target.previousElementSibling;
+
+    const reviewText = e.target.parentElement.firstElementChild.value;
+
+    try {
+      if (reviewText.length < 50 || reviewText.length > 500) {
+        throw new Error('Отзыв должен быть не менее 50 символов в длину и не более 500.');
+      }
+
+      const productId = e.target.parentElement.parentElement.id;
+      const reviewObj = { id: uid(), text: reviewText };
+      addReviewToProduct(productId, reviewObj);
+
+      const reviewEl = document.createElement('li');
+      reviewEl.className = 'reviews_item';
+      reviewEl.textContent = reviewText;
+      e.target.parentElement.previousElementSibling.append(reviewEl);
+
+      e.target.parentElement.firstElementChild.value = '';
+
+      if (errorEl.textContent) {
+        errorEl.textContent = '';
+      }
+    } catch (error) {
+      errorEl.textContent = error.message;
+      console.log(error.message);
+    }
+  }
+});
