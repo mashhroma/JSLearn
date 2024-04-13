@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(248, 245, 240);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    background-color: #fff;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    min-height: 100vh;
+}
+
+.heading{
+    padding: 10px 30px;
+    background-color: antiquewhite;
+    color: #6e665b;
+}
+
+.menu{
+    padding: 10px 30px;
+    display: flex;
+    gap: 20px;
+    background-color: #6e665b;
+}
+.menu__item{
+    list-style-type: none;
+    border: solid 1px #7b746b;
+    border-radius: 5px;
+    padding: 6px;
+}
+.menu__item:hover {
+background-color: #7b746b;
+}
+.menu__item>a {
+    text-decoration: none;
+    color: #fff;
+}
+.menu__item>a:hover {
+    color: antiquewhite;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 30px;
+}
+
+.review__form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+}
+
+.review__product, .review__text {
+    padding: 10px;
+    font-size: 14px;
+    font-family: monospace;
+    border: solid 1px #c5e9fc;
+    border-radius: 5px;
+}
+
+.product {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: solid 1px #7b746b;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.reviews{
+    background-color: #c5e9fc40;
+    
+}
+.reviews__list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+}
+.reviews__item{
+    list-style-type: none;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: solid 1px #c5e9fc;
+    border-radius: 5px;
+}
+
+.reviews>summary {
+    padding: 6px;
+    border: solid 1px #c5e9fc;
+    border-radius: 5px;
+    background-color: #c5e9fc;
+}
+.reviews>summary:hover{
+    cursor: pointer;
+}
+
+.reviews__delete, .button{
+    width: fit-content;
+    padding: 6px;
+    border: solid 1px #c5e9fc;
+    border-radius: 5px;
+    background-color: antiquewhite;
+}
+
+.reviews__delete:hover{
+    background-color: #c5e9fc;
+}
