@@ -1,4 +1,4 @@
-import { saveLSLessons, loginUserInPage, setActiveUser, logOutUserInPage, hasActiveUser, lessons } from "./storage.js";
+import { saveLSLessons, loginUserInPage, logOutUserInPage, hasActiveUser, lessons } from "./storage.js";
 
 function generateLessonInHTML(lesson) {
     let classRegister = 'lesson__register';
@@ -21,48 +21,68 @@ function generateLessonInHTML(lesson) {
     `;
 }
 
+function generateHTMLcontent(htmlSection, lessons) {
+    const title = `
+    <div class="lesson">
+        <div class="lesson__name">название занятия</div>
+        <div class="lesson__name">время проведения занятия</div>
+        <div class="lesson__max-size">максимальное количество участников</div>
+        <div class="lesson__curr-size">текущее количество участников</div>
+        <div class="lesson__register">кнопка "записаться"</div>
+        <div class="lesson__cancel-register">кнопка "отменить запись"</div>
+    </div>
+    `;
+    htmlSection.innerHTML = title + lessons.map(lesson => generateLessonInHTML(lesson)).join('');
+}
+
+function logOutFormVisibility(boolean) {
+    if (boolean === true) {
+        loginFormEl.style.display = 'none';
+        userFormEl.insertAdjacentHTML('beforeend', `<span class='logout'>Привет, ${hasActiveUser()}<button class="logout__button button">Выйти</button></span>`);
+    }
+    if (boolean === false) {
+        const logout = userFormEl
+            .querySelector('.logout')
+            .remove();
+        loginFormEl.style.display = '';
+    }
+}
+
 const contentEl = document.querySelector('.content');
 const loginFormEl = document.querySelector('.login__form');
 const userFormEl = document.querySelector('.user__form');
 
-contentEl.innerHTML += lessons.map(lesson => generateLessonInHTML(lesson)).join('');
-
-function logOutFormVisibility() {
-    loginFormEl.style.display = 'none';
-    userFormEl.insertAdjacentHTML('beforeend', '<button class="logout__button">Выйти</button>');
-}
+generateHTMLcontent(contentEl, lessons);
 
 document.addEventListener('DOMContentLoaded', function (e) {
     if (hasActiveUser()) {
-        logOutFormVisibility();
+        logOutFormVisibility(true);
     }
 });
 
 userFormEl.addEventListener('click', function ({ target }) {
     if (target.closest('.login__button')) {
-        const userName = loginFormEl.querySelector('.login__username').value;
-        if (userName !== '') {
-            loginUserInPage(userName)
-            setActiveUser(userName)
+        const userName = loginFormEl.querySelector('.login__username').value.trim();
+        if (userName !== '' && userName !== null) {
+            loginUserInPage(userName);
+            logOutFormVisibility(true);
+            generateHTMLcontent(contentEl, lessons);
         };
-        logOutFormVisibility();
     }
 
     if (target.closest('.logout__button')) {
-        console.log('booom');
-        target.style.display = 'none';
-        loginFormEl.style.display = '';
         logOutUserInPage();
+        logOutFormVisibility(false);
+        generateHTMLcontent(contentEl, lessons);
     }
 });
 
 contentEl.addEventListener('click', function ({ target }) {
+    const index = lessons.findIndex(lesson => lesson.id === +target.parentElement.id);
+    const user = hasActiveUser();
+
     if (target.closest('.lesson__register')) {
-
-        const index = lessons.findIndex(lesson => lesson.id === +target.parentElement.id);
-
-        const user = hasActiveUser();
-        if (!lessons[index].regUsers.includes(user)) {
+        if (!lessons[index].regUsers.includes(user) && user !== null) {
             lessons[index].regUsers.push(user);
             if (lessons[index].currentParticipants < lessons[index].maxParticipants) {
                 target.parentElement
@@ -70,8 +90,29 @@ contentEl.addEventListener('click', function ({ target }) {
                     .textContent = ++lessons[index].currentParticipants;
 
                 saveLSLessons(lessons);
+
+                target.closest('.lesson__register').classList.add('nonactive');
+                target.closest('.lesson__register').classList.remove('lesson__register');
+                target.nextElementSibling.closest('.nonactive').classList.add('lesson__cancel-register');
+                target.nextElementSibling.closest('.nonactive').classList.remove('nonactive');
             }
         }
+    }
 
+    if (target.closest('.lesson__cancel-register')) {
+        if (lessons[index].regUsers.includes(user) && user !== null) {
+            const regUserIndex = lessons[index].regUsers.findIndex(regUser => regUser === user);
+            lessons[index].regUsers.splice(regUserIndex, 1);
+            target.parentElement
+                .querySelector('.lesson__current-participants')
+                .textContent = --lessons[index].currentParticipants;
+
+            saveLSLessons(lessons);
+
+            target.closest('.lesson__cancel-register').classList.add('nonactive');
+            target.closest('.lesson__cancel-register').classList.remove('lesson__cancel-register');
+            target.previousElementSibling.closest('.nonactive').classList.add('lesson__register');
+            target.previousElementSibling.closest('.nonactive').classList.remove('nonactive');
+        }
     }
 });

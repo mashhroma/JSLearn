@@ -14,10 +14,24 @@ body {
     max-width: 1000px;
 }
 
-.heading{
+.header{
+    display: flex;
+    justify-content: space-between;
     padding: 20px 40px;
+}
+
+.heading{
     color: gray;
     text-decoration: overline #e6ffc0;
+}
+
+.description{
+    margin-left: 40px;
+    padding: 10px 10px;
+    color: gray;
+    border-left: solid 4px #e6ffc0;
+    border-bottom: solid 2px #e6ffc0;
+    width: fit-content;
 }
 
 .content {
@@ -66,10 +80,17 @@ body {
     background-color: #efeaea;
 }
 
-.lesson__user{
-    grid-column: 1/5;
-    width: 90%;
+.login__username{
     padding: 2px;
-    margin-top: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.user__form{
+    padding: 15px 10px;
+    background-color: #f8ffea68;
+    color: gray;
+    border: solid 3px #e6ffc0;
+    font-size: 12px;
+    border-radius: 5px;
 }

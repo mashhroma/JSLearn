@@ -81,6 +81,7 @@ function loginUserInPage(user) {
         users.push(user);
         saveLSUsers(users);
     }
+    setActiveUser(user);
 }
 
 function logOutUserInPage() {
