@@ -14,9 +14,9 @@
 
 // Добавьте стилизацию для слайдера и элементов интерфейса с использованием CSS для улучшения внешнего вида.
 
-function getBigPicture(images, index) {
+function renderBigPicture(index) {
     pictureEL.innerHTML = `
-    <img class="big-img" src="${images[index].url}" data-id="${images[index].id}">
+    <img class="big-img" src="${pics[index].url}" data-id="${pics[index].id}">
     `;
 }
 
@@ -70,23 +70,23 @@ const prevButtonEl = document.querySelector('.prev');
 const nextButtonEl = document.querySelector('.next');
 const pointsEl = document.querySelector('.points');
 
-getBigPicture(pics, 0);
+renderBigPicture(0);
 
 pointsEl.innerHTML = pics.map(pic => `<img class="small-img" data-id="${pic.id}" src="${pic.url}">`).join('');
 
-prevButtonEl.addEventListener('click', function () {
+prevButtonEl.addEventListener('click', () => {
     const index = pics.findIndex(pic => pic.id === +pictureEL.querySelector('.big-img').dataset.id)
     const nextIndex = (index === 0) ? pics.length - 1 : index - 1;
-    getBigPicture(pics, nextIndex);
+    renderBigPicture(nextIndex);
 });
 
-nextButtonEl.addEventListener('click', function () {
+nextButtonEl.addEventListener('click', () => {
     const index = pics.findIndex(pic => pic.id === +pictureEL.querySelector('.big-img').dataset.id)
     const nextIndex = (index === pics.length - 1) ? 0 : index + 1;
-    getBigPicture(pics, nextIndex);
+    renderBigPicture(nextIndex);
 });
 
-pointsEl.addEventListener('click', function ({ target }) {
+pointsEl.addEventListener('click', ({ target }) => {
     const index = pics.findIndex(pic => pic.id === +target.dataset.id)
-    getBigPicture(pics, index);
+    renderBigPicture(index);
 });

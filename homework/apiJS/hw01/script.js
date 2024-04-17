@@ -35,16 +35,20 @@ function generateHTMLcontent(htmlSection, lessons) {
     htmlSection.innerHTML = title + lessons.map(lesson => generateLessonInHTML(lesson)).join('');
 }
 
-function logOutFormVisibility(boolean) {
-    if (boolean === true) {
+function logOutFormVisibility(isVisible) {
+    if (isVisible) {
         loginFormEl.style.display = 'none';
-        userFormEl.insertAdjacentHTML('beforeend', `<span class='logout'>Привет, ${hasActiveUser()}<button class="logout__button button">Выйти</button></span>`);
+        userFormEl
+            .insertAdjacentHTML(
+                'beforeend',
+                `<span class='logout'>Привет, ${hasActiveUser()}<button class="logout__button button">Выйти</button></span>`
+            );
     }
-    if (boolean === false) {
-        const logout = userFormEl
+    if (!isVisible) {
+        userFormEl
             .querySelector('.logout')
             .remove();
-        loginFormEl.style.display = '';
+        loginFormEl.style.removeProperty('display');
     }
 }
 
@@ -54,13 +58,13 @@ const userFormEl = document.querySelector('.user__form');
 
 generateHTMLcontent(contentEl, lessons);
 
-document.addEventListener('DOMContentLoaded', function (e) {
+document.addEventListener('DOMContentLoaded', (e) => {
     if (hasActiveUser()) {
         logOutFormVisibility(true);
     }
 });
 
-userFormEl.addEventListener('click', function ({ target }) {
+userFormEl.addEventListener('click', ({ target }) => {
     if (target.closest('.login__button')) {
         const userName = loginFormEl.querySelector('.login__username').value.trim();
         if (userName !== '' && userName !== null) {
@@ -77,7 +81,7 @@ userFormEl.addEventListener('click', function ({ target }) {
     }
 });
 
-contentEl.addEventListener('click', function ({ target }) {
+contentEl.addEventListener('click', ({ target }) => {
     const index = lessons.findIndex(lesson => lesson.id === +target.parentElement.id);
     const user = hasActiveUser();
 
