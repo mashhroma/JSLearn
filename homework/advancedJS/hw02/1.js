@@ -49,10 +49,11 @@ class Library {
     }
 
     hasBook(title) {
-        if (this.#books.includes(title)) {
-            return true;
-        }
-        return false;
+        // if (this.#books.includes(title)) {
+        //     return true;
+        // }
+        // return false;
+        return this.#books.includes(title);
     }
 }
 

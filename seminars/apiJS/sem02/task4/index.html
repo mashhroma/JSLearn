@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Modal Window</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="question">
+            <p>Вопрос 1: Какой ваш любимый цвет?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q1" value="Синий"> Синий
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="Зеленый"> Зеленый
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="Красный"> Красный
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>Вопрос 2: Какое ваше любимое животное?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q2" value="Собака"> Собака
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="Кот"> Кот
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="Попугай"> Попугай
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>Вопрос 3: Какой твой любимый язык программирования?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q3" value="JS"> JS
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="Go"> Go
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="Python"> Python
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="submit">Завершить опрос</button>
+
+    <div class="result hidden">
+        <p>Результаты:</p>
+        <div class="answers">
+
+        </div>
+        <!-- <p id="result-q1">Вопрос 1: <span></span></p>
+        <p id="result-q2">Вопрос 2: <span></span></p> -->
+    </div>
+</body>
+
+</html>

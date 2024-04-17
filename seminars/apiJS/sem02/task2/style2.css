@@ -1,0 +1,14 @@
+.modal {
+    display: none;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    Left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+.active {
+    display: block;
+}

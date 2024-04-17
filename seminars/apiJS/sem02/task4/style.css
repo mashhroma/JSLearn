@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.result {
+    font-weight: bold;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.hidden {
+    display: none;
+}

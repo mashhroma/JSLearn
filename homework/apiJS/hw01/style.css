@@ -1,0 +1,75 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    margin: 0 5vw;
+    background-color: #FFF;
+    min-height: 100vh;
+    max-width: 1000px;
+}
+
+.heading{
+    padding: 20px 40px;
+    color: gray;
+    text-decoration: overline #e6ffc0;
+}
+
+.content {
+    padding: 20px 40px;
+}
+
+.lesson{
+    font-size: 12px;
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: 20% 20% 12% 12% 18% 18%;
+    border-bottom: solid 1px;
+    align-items: center;
+}
+.lesson:first-child{
+    border-top: solid 1px;
+    font-size: 9px;
+    text-align: center;
+}
+.lesson:hover{
+    background-color: #e6ffc05d;
+}
+
+.lesson__time, .lesson__max-participants, .lesson__current-participants {
+    text-align: center;
+}
+
+.button{
+    height: 90%;
+    margin: 2px;
+    padding: 2px;
+    background-color: #e6ffc0;
+    border: solid 1px #c9e1a4;
+    border-radius: 5px;
+    color: rgb(92, 92, 92);
+}
+.nonactive{
+    background-color: #efeaea;
+    color: #c4bebe;
+}
+
+.button:hover{
+    background-color: #c9e1a4;
+}
+.nonactive:hover{
+    background-color: #efeaea;
+}
+
+.lesson__user{
+    grid-column: 1/5;
+    width: 90%;
+    padding: 2px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
