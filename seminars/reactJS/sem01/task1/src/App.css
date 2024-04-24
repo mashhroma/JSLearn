@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.Card {
-  color: #61dafb;
-  border: solid 2px lightblue;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -40,4 +35,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Card {
+  color: #61dafb;
+  border: solid 2px lightblue;
+  margin: 5px;
+  padding: 5px;
 }
