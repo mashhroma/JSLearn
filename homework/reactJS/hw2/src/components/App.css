@@ -1,0 +1,43 @@
+.App {
+  margin: 2vw 15vw;
+  padding: 0px 30px;
+  height: 100%;
+}
+
+.Heading {
+  background-color: purple;
+  border-radius: 10px;
+  color: #FFF;
+  padding: 12px;
+}
+
+.Comment {
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  border: solid 1px purple;
+  border-radius: 10px;
+  color: purple;
+  transition: .5s;
+}
+
+.Comment:hover {
+background-color: #f9f5d3;
+}
+
+.Button {
+  padding: 6px;
+  border: solid 1px purple;
+  background-color: purple;
+  border-radius: 10px;
+  color: #FFF;
+  transition: .5s;
+}
+
+.Button:hover {
+  border: solid 1px #a627a6;
+  background-color: #a627a6;
+}
