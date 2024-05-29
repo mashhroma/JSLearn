@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content{
+  padding: 12px;
+  height: 100vh;
+}
