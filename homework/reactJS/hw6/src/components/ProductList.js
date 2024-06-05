@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProduct, toggleAvailable } from '../actions/todoActions';
+import { deleteProduct, toggleAvailable } from '../actions/productActions';
 import { FilterContext } from '../contexts/FilterContext';
 import withFilter from '../hoc/withFilter';
 

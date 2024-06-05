@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, TOGGLE_AVAILABLE } from '../actions/todoActions';
+import { ADD_PRODUCT, DELETE_PRODUCT, TOGGLE_AVAILABLE } from '../actions/productActions';
 
 const initialState = [];
 
