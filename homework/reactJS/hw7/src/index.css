@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: grey;
+}
+
+.App{
+  margin: 36px;
+}
+
+h1{
+  margin-bottom: 36px;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-left: 36px;
+}
+
+li{
+  list-style-type: decimal;
+  font-size: 20px;
+  /* color: #17c817; */
+}

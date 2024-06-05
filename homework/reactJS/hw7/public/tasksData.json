@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": "Протереть пыль.",
+        "completed": true
+    },
+    {
+        "id": 2,
+        "title": "Поменять постельное бельё.",
+        "completed": false
+    },
+    {
+        "id": 31,
+        "title": "Разобрать шкаф.",
+        "completed": true
+    },
+    {
+        "id": 4,
+        "title": "Убраться на балконе.",
+        "completed": false
+    },
+    {
+        "id": 5,
+        "title": "Почистить текстиль (шторы, ковры).",
+        "completed": false
+    }
+]
