@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  min-height: 100vh;
+  padding: 24px 10vw;
+}
+
+button{
+  width: 150px;
+  height: 60px;
+  padding: 12px;
+  font-size: 14px;
+}

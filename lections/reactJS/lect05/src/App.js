@@ -52,12 +52,12 @@ const ThemeToggle = () => {
 
 const withStyles = (WrappedComponent, styles) => {
   return (props) => {
-    const newProps = {...props, styles};
+    const newProps = { ...props, styles };
     return <WrappedComponent {...newProps} />;
   };
 };
 
-const Button = ({styles}) => {
+const Button = ({ styles }) => {
   return (
     <button style={styles}>Click me</button>
   );
@@ -67,7 +67,7 @@ const withCounter = (WrappedComponent) => {
   return (props) => {
     const [count, setCount] = useState(0);
     const incrementCount = () => {
-      setCount(count+1);
+      setCount(count + 1);
     };
 
     const newProps = {
@@ -80,7 +80,7 @@ const withCounter = (WrappedComponent) => {
   };
 };
 
-const ClickCounter = ({count, incrementCount, message}) => {
+const ClickCounter = ({ count, incrementCount, message }) => {
   return (
     <div>
       <p>{message}</p>
@@ -109,8 +109,8 @@ const App = () => {
 
 
   return (
-    <ThemeContext.Provider value={ {theme, toggleTheme} }>
-      <NotesContext.Provider value={ {notes, addNote} }>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <NotesContext.Provider value={{ notes, addNote }}>
         <div className='content' style={{ color: theme === 'light' ? 'black' : 'white', background: theme === 'light' ? 'white' : 'black' }}>
           <h1>Список</h1>
           <ThemeToggle />
@@ -119,9 +119,9 @@ const App = () => {
           <Button1 />
           <Button2 />
           <ClickCounterWithCounter message='Счетчик из компонента высшего порядка' />
-        <Provider store={store}>
-          <Counter />
-        </Provider>
+          <Provider store={store}>
+            <Counter />
+          </Provider>
         </div>
       </NotesContext.Provider>
     </ThemeContext.Provider>

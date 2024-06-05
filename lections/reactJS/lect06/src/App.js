@@ -4,8 +4,8 @@ import store from "./store";
 import ButtonComponent from "./components/ButtonComponent";
 import CounterComponent from "./components/CounterComponent";
 import ButtonComponentMinus from "./components/ButtonComponentMinus";
-// npm i react-redux
-// npm i @reduxjs/toolkit
+// npm install react-redux
+// npm install @reduxjs/toolkit
 
 function App() {
   return (
