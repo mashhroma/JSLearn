@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App{
+  margin: 24px 36px;
+}
+
+.add{
+  margin-top: 36px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid grey;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.subtitle{
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid grey;
+}
+
+.filter {
+  margin-top: 12px;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+ul{
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+
+li{
+  width: 200px;
+  height: 200px;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.title{
+  font-size: 20px;
+}
+label{
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+  align-self: flex-end;
+}
